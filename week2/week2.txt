@@ -1,1 +1,67 @@
+quiz - mobile.csv 머신러닝
 
+1. 파일을 업로드
+2. x,y로 나누고
+3. train,test로 나누고
+4. 4가지 머신러닝
+5. 평가
+
+웹으로부터 불러오기
+-> 파일은 파일 경로를 읽어오지만, 웹은 해당 파일이 있는 웹 주소를 pd.read_csv() 함수로 읽어옴
+-> 엑셀은 pd.read_excel() 함수
+
+x,y로 나누는 이유 -> x로부터 y를 계산하기 위해서, Rule을 찾아내기 위해서
+train,test 데이터를 나누는 이유 -> test는 새로운 데이터로 해봐야 하니까
+전통적인 프로그램과 AI의 차이 -> 전통적인 프로그램은 Rule을 프로그래머가 만들지만, AI는 Rule을 직접 만듦.
+
+-print(y_train[:5]) -> [:n] 을 하면 n개만 출력함
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
+print(y_train[:5])
+
+x_train과 x_test의 속성이 같을 수록 모델 정확도는 올라간다. 속성이 다를 수록 모델 정확도는 낮아진다.
+모델의 일반화 능력 -> 모델의 성능을 좌우. 데이터가 많아야 함(많이 학습되어있어야 함)
+
+산점도 = 분포도
+산점도에서 데이터를 가지고 함수를 만든다. y=f(x) -> Rule
+**이때 기울기를 아는 것이 제일 중요하다.
+y = wx + b, weight(기울기), bias(절편)
+함수는 AI가 만들어준다.
+
+KNN 알고리즘(지도학습)
+목적 -> 레이블을 맞추는(결정하는) 것. 
+k=3 일때 가장 거리가 가까운 3개의 점을 찾아서 결정
+최적의 k값? 정확도의 변화가 거의 없을 때
+
+imbalanced data(불균형 데이터)
+-> major class에 치우치게 됨
+1. label 확인하는 것이 중요하다.
+
+2. 잘못된 값(결측치)이 들어있다면 데이터 모델이 잘 안돌아간다. 
+# 결측치 확인 -> df.isnull().sum()
+df.colums 컬럼명 확인 
+df.head() 처음 5개의 행 확인
+df['label'].value_counts() 레이블 값의 개수 확인
+
+
+***numpy, pandas dataframe
+dataframe은 표. 컬럼들을 마음대로 조작할 수 있다.
+numpy는 수치적 배열. 배열명이 없어 연산이 빠르다.
+불러들일 때는 dataframe이다.
+머신러닝은 dataframe으로도 가능하지만, 딥러닝은 numpy로만 가능하다.
+
+
+-EDA(탐색적 데이터분석)
+
+머신러닝에서 레이블은 숫자가 아니어도 괜찮다. 딥러닝은 꼭 숫자여야 한다.
+encoding -> 모든 문자를 숫자로 바꾸는 것
+# 모든 컬럼을 순차적으로 인코딩
+for column in df.columns:
+    df[column] = label_encoder.fit_transform(df[column])
+# 'Color' 컬럼 삭제
+df = df.drop(columns=['Color'])
+# 각 컬럼의 평균값으로 결측치 채우기
+df.fillna(df.mean(), inplace=True)
+만약 첫 번째 컬럼이 레이블이라면 X = df.iloc[:, 1:]와 y = df.iloc[:, 0]
+만약 마지막 컬럼이 레이블이라면 X = df.iloc[:, :-1]와 y = df.iloc[:, -1]
+
+//중요한, 필요한 함수들을 따로 정리해놓자
