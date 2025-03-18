@@ -1,0 +1,55 @@
+Colab을 사용하는 이유 -> Colab에서 GPU를 제공한다.
+그러나 복잡한 프로그램에서는 에러가 많이 나기에 GPU를 권장하지는 않는다.
+
+Colab 사용법
+1. Google Drive에 업로드한다.
+2. runtime 유형을 GPU로 바꿔주고, mount 시켜준다(파일 - 드라이브 마운트).
+3. 경로를 복사한다. 파일 경로를 복사한 경로로 바꿔준다.
+
+index_col=0 -> 첫 번째 열(컬럼)을 인덱스로 사용해라
+header = None -> 파일에서 첫 번째 행을 컬럼명으로 사용하지 않고, 데이터의 일부로 간주
+
+# 컬럼명 리스트를 만들고 CSV 파일을 읽어올 때 컬럼명 부여
+column_names = ["price", "maint", "doors", "persons", "lug_capacity", "safety", "output"]
+df = pd.read_csv(file_path, names=column_names, header=None)
+
+numpy와 pandas dataframe의 차이점
+numpy는 배열이다. pandas dataframe은 컬럼명이 있는 표.
+***pandas dataframe으로 조작하고, 모델에 넣기 전 numpy로 변경
+
+scaler -> 엑셀 값을 0-1 사이로 변경. 레이블을 빼고 X만 변경함
+
+.shape -> dataframe의 행과 열 개수를 반환
+
+Confusion Matrix: 
+ [[ 76   6   1   0] -> 0을 0으로 맞춤. 0을 1로 맞춤. 0을 2로 맞춤. 0을 3으로 맞춤.
+ [  1  10   0   0] -> 1을 0으로 맞춤. 1을 1로 맞춤. .....
+ [  0   0 235   0] 
+ [  1   2   0  14]]
+
+
+-머신러닝
+**분류와 회귀의 차이점
+Classification은 이산적인 값을 예측
+Regression은 연속적인 값을 예측
+*연속적인 것이 연관성이 있느냐의 차이*
+머신러닝에서 둘은 API가 다르다.
+
+Classification을 할 때, 레이블의 값이 연속적인 값이 되지 않게 엔코딩한다.
+
+
+feature selection -> 중요한 feature만 뽑아서 사용하는 것
+상관 관계 행렬로 확인(copy&paste) 상관 관계가 0.3 이상이면 높음. 0.7 이상이면 매우 높음
+
+KNN 최적의 값 구하는거 확인
+
+
+bias(편향) - minor class보다 major class에 유리하게 된다.
+
+-머신러닝의 순서
+데이터 수집
+전처리
+모델 훈련
+평가
+
+(모든 입력값 - 평균)/표준편차 -> scaling, feature의 분포를 맞추기 위해 스케일링
