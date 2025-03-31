@@ -1,0 +1,75 @@
+Learning, 학습했다 -> Rule을 습득하는 것
+
+		Underfeeting 		  vs 	Overfitting
+what? 	학습이 덜 이루어진 상태		학습이 과도하게 이루어진 상태
+why?		데이터 부족(일반화 부족),		데이터 과잉, 데이터 복잡
+		데이터 단순
+solution	데이터 증대, 데이터 복잡		데이터 단순, 규제
+pros/cons	
+
+
+모델의 일반화 - 다양한 상황에서도 일관되게 성능을 발휘하는 것
+
+훈련 데이터과 테스트 데이터가 비슷해야 함.
+그렇지 않다면 -> ***샘플링 편향
+
+numpy에서 인덱싱을 사용하여 데이터 조절 가능
+
+
+왜 같은 데이터와 모델을 가지고도 다른 정확도가 나오는가?
+Training/Test 나눌 때 random으로 하기 때문
+
+*****교차 검증(Cross validation)
+k-fold Cross validation
+k개의 데이터가 있을 때, 하나의 데이터를 test 데이터로 사용해서, k번 학습하는 것
+교차 검증을 하는 이유 - 데이터의 특성이 다 다르기 때문
+training, validation, test로 나눈다. validation을 보면서(목적으로 하면서) training하고, test한다.
+
+standard scaler
+스케일링 / 규제
+스케일링은 기준을 맞추는 것(0~1)
+규제는 overfitting을 방지하는 것
+
+knn은 레이블을 예측하는 지도학습 알고리즘
+
+선형회귀 regression
+x와 y의 상관관계를 아는 것 - 상관계수
+R(상관계수) -1~1
+R^ 0~1, 음수를 없애기 위해서
+
+*******머신러닝, 딥러닝은 weight와 bias를 구하기 위한 것
+
+
+Feature Engineering
+새로운 특성을 만들어내거나 가공하는 것
+새롭게 만들어낸 feature가 기존 feature와 상관관계가 적을 때 더 도움이 된다
+
+규제
+Norm1, L1, Lasso - 일부 가중치를 0으로 만든다 -> 몇 개의 중요한 Feature만 선택
+Norm2, L2, Ridge - 모든 가중치를 0에 가깝게 만듦 -> 모든 Feature를 사용하지만 영향력을 줄임
+
+
+로지스틱 회귀 -> 이름은 회귀지만, 분류에 적합
+
+Knn
+
+Decision Tree
+불순도 - 지니 계수(0~1) 값이 작을수록 순수한 상태
+지니 계수 값을 줄이도록 계속 분류
+
+Random Forest
+Decision Tree를 여러 개 해놓은 것, 앙상블 학습 기법
+**Random Forest에서 Decision Tree를 앙상블하는 이유
+-모델의 성능을 개선하고 과적합(overfitting) 을 방지하기 위해서
+Ensemble - 여러 개의 모델 중 제일 좋은 것을 선택하는 것, 그러나 오버헤드가 크다
+bootstrap - 동일한 샘플을 중복하여 여러 개의 샘플을 만든다, 샘플링 기법
+
+그리드 서치 - 하이퍼파라미터 튜닝을 위한 검색 방법 중 하나
+하이퍼파라미터의 모든 가능한 조합을 시험, 최적의 파라미터를 선택
+하이퍼파라미터 튜닝 - 모델의 성능을 위해 여러 가지 파라미터값을 최적화하는 것
+
+머신러닝과 딥러닝의 차이
+1. 딥러닝에서는 레이블을 원핫-엔코딩한다.
+2. Numpy로 변환
+3. input_shape=(30,) -> 숫자는 feature 개수
+Dense(2,activation='softmax') -> 분류층, 2진분류
