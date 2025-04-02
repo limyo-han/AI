@@ -1,0 +1,56 @@
+Review
+불순도 - 높을수록 다양한 클래스가 섞여있고, 낮을수록 한 클래스만 있다는 것
+Decision Tree - 스무고개
+Bootstrap - 중복해서 샘플링
+Random Forest 
+
+
+SVM(Support Vector Machine)
+결정 경계를 찾는 방식으로 데이터를 분류
+두 클래스 사이의 마진을 최대화하는 '최적의 초평면'을 찾는 것이 핵심
+
+
+딥러닝
+1. forward propagation
+2. Backward propagation
+3. loss function
+4. optimizer
+5. activation function
+
+회귀는 출력층의 개수가 1개
+분류는 출력층의 개수가 2개 이상
+입력층은 feature
+
+
+***
+1. forward propagation(순전파)
+입력, weight(가중치), bias(편향)으로 출력을 결정
+예측값과 실제값의 오차 계산 -> loss function, 
+backward propagation(역전파) -> weight와 bias를 조정
+forward propagation과 loss function, backward propagation을 반복하여 최적의 weight와 bias를 찾는다.
+
+머신러닝과 딥러닝의 차이
+1. 딥러닝에서는 label을 one-hot encoding
+2. x,y를 numpy로 변환
+3. loss function, 출력층과 activation function
+
+**
+회귀 - activation function x, loss function mse
+이진 분류 - activation function Sigmoid, loss function binary_crossentropy
+다중 분류 - activation function Softmax, loss function categorial_crossentropy
+
+
+분류를 평가하는 기준 - 정확도
+회귀를 평가하는 기준 - mse(예측값 - 실제값의 제곱, 그 제곱의 평균)
+
+경사하강법
+최적의 weight 값을 구하기 위해 찾아가는 알고리즘
+손실 함수를 구해야 하고, 이동을 얼마나 해야하는가를 결정하는 것
+W = W - lr(학습률)*미분값
+
+가중치에 대한 기울기 -> 가중치를 변화시켰을 때 손실 함수가 얼마나 변하는지를 나타내는 값
+x축은 가중치, y축은 손실 함수. y값이 가장 낮은 지점이 최적의 가중치(weight)
+
+
+
+
