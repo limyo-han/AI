@@ -1,0 +1,77 @@
+학습된 모델에서 결과를 알고 싶으면?
+-> X를 모델에 넣어보면 된다
+
+
+머신러닝과 딥러닝
+
+공통점
+-shape 확인
+
+-차이점
+딥러닝은 numpy로 변환
+One-hot encoding
+
+평가할 때는 y_predict와 y_test값을 리스트로 만들어서, 평가
+회귀의 평가 - mse
+분류의 평가 - accuracy, confusion matrix까지 확인
+
+accuracy의 문제점
+imbalanced data를 고려하지 않는다.
+-> 따라서 F1 Score를 사용한다.
+
+*****
+Recall - 완벽하게 맞추고 싶을 때 
+Precision - 많이 맞추고 싶을 때
+조화롭게 사용하는 것이 F1 Score
+*****
+
+.values()는 numpy로 변환하는 함수. 데이터 전처리 마지막 부분에 써야함
+
+
+딥러닝에서 loss와 함께 metrics도 같이 바꿔줘야 함
+regression은 mse
+classification은 accuracy
+
+
+Early Stop -> 과적합을 방지하기 위한 정규화 기법 중 하나
+
+loss가 떨어지지 않는다면
+1. 스케일링
+2. 하이퍼파라미터 튜닝
+
+
+* 스케일링, F1 Score 추가
+
+#Accuracy of the predicted values
+from sklearn.metrics import classification_report,confusion_matrix
+print(classification_report(y_test_class,y_pred_class))
+print(confusion_matrix(y_test_class,y_pred_class))
+
+
+딥러닝
+1. forward propagation
+2. Backward propagation
+3. loss function
+4. optimizer
+5. activation function
+
+
+Activation Function을 쓰는 이유
+노드에서 출력값을 '비선형적으로 변환'하는 역할
+이게 없으면, 아무리 layer를 쌓아도 전체 모델이 선형 함수가 돼버린다.
+
+
+***
+경사하강법은 알고리즘, 손실을 최소화하기 위한 함수
+Optimizer는 경사하강법을 어떻게 실행할지를 '구체화'한 알고리즘
+
+1epoch = 전체 데이터셋 1회 학습
+gradient(기울기)
+
+weight = weight - gradient * Learning Rate
+
+
+-파이토치
+파이토치형 텐서로 바꾼다
+로더에 올린다
+
